@@ -6,8 +6,8 @@ pipeline {
     environment {
 
         greeter = configMap.get('greeter')
-        PROJECT = "expense"
-        COMPONENT = "backend"
+        PROJECT = configMap.get('project')
+        COMPONENT = configMap.get('component')
         ACC_Id = "894650614410"
         APP_VERSION = " "
     }
