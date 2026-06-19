@@ -1,9 +1,11 @@
-def call(Map configmap){
+def call(Map configMap){
 
 pipeline {
     agent { label 'AGENT-1' }
 
     environment {
+
+        greeter = configMap.get('greeter')
         PROJECT = "expense"
         COMPONENT = "backend"
         ACC_Id = "894650614410"
@@ -19,6 +21,16 @@ pipeline {
     }
 
     stages {
+
+
+        stage('print shared library variable') {
+            steps {
+                script {
+                    echo "${greeter}"
+                }
+            }
+        }   
+
         stage('Read Version') {
             steps {
                 script {
